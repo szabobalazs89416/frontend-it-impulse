@@ -1,0 +1,55 @@
+.flex-container{
+    display: flex;
+    flex-direction: column;
+}
+
+div{
+    margin-bottom: 8px;
+}
+
+div:nth-child(1) label{
+    margin-right: 59px;
+}
+
+div:nth-child(2) label{
+    margin-right: 16px;
+}
+
+div:nth-child(3) label{
+    margin-right: 18px;
+}
+
+.button-block {
+    display: flex;
+    width: 280px;
+    justify-content: flex-end;
+}
+
+.alert{
+    color: red;
+}
+
+.border-alert{
+    border-color: red;
+}
+
+select option {
+    margin: 40px;
+    background-color: grey;
+    color: #fff;
+  }
+
+@media only screen and (min-width: 500px) {
+
+    div:nth-child(2) input{
+        width: 400px;
+    }
+    
+    div:nth-child(3) input{
+        width: 400px;
+    }
+
+    .button-block {
+        width: 490px;
+    }
+}

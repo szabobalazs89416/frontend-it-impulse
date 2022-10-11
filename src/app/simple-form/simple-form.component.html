@@ -1,0 +1,36 @@
+<h1>Aareon Angular Test</h1>
+<form [formGroup]="myForm" (ngSubmit)="saveForm(myForm)">
+    <div class="flex-container">
+        <div>
+            <label>Title</label>
+            <select #title (change)="onSelected(title.value)">
+                <option value="">-- Select an option --</option>
+                <option class="fa" *ngFor="let t of titles" [selected]="t.isDefault" [value]="t.title">
+                    <span *ngIf="t.isDefault">&#x2713;</span>{{t.title}}</option>
+            </select>
+        </div>
+        <div>
+            <label>First name</label>
+            <input type="text" placeholder="First name" [(ngModel)]="selectedTitle.firstName" id="firstName"
+                name="firstName" formControlName="firstName" />
+        </div>
+        <div>
+            <label>Last name</label>
+            <input type="text" placeholder="Last name" id="lastName" name="lastName" required
+                [(ngModel)]="selectedTitle.lastName" formControlName="lastName"
+                [ngClass]="myForm.get('lastName')?.errors?.['required'] && (myForm.get('lastName')?.dirty || myForm.get('lastName')?.touched)? 'border-alert':''" />
+        </div>
+        <div *ngIf="myForm.get('lastName')?.errors?.['required'] && (myForm.get('lastName')?.dirty || myForm.get('lastName')?.touched)"
+            class="alert">
+            * Last name is mandatory
+        </div>
+        <span></span>
+        <div>
+            <input type="checkbox" [checked]="selectedTitle.acceptTerms" (change)="onChecked($event)" />
+            <label>I accept the terms & conditions</label>
+        </div>
+        <div class="button-block">
+            <button type="submit" [disabled]="!selectedTitle.acceptTerms">Submit</button>
+        </div>
+    </div>
+</form>
